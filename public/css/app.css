@@ -29187,3 +29187,12 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.router-link-exact-active {
+  background-color: #007BFF !important;
+  color: #fff !important;
+}
+
+.router-link-exact-active:hover {
+  background-color: #009DFF !important;
+  color: #fff !important;
+}
