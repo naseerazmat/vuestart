@@ -21,14 +21,18 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Type</th>
-                      <th>Modify</th>
+                      <th>Bio</th>
+                      <th>Status</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
+                    <tr v-for="(user, index) in users">
+                      <td>{{ index+1 }}</td>
+                      <td>{{ user.name }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.type }}</td>
+                      <td>{{ user.bio }}</td>
                       <td><span class="tag tag-success">Approved</span></td>
                       <td>
                           <a href="#">
@@ -101,6 +105,7 @@
     export default {
         data() {
             return {
+                users: {},
                 form: new Form({
                     name: '',
                     email: '',
@@ -112,6 +117,10 @@
             }
         },
         methods: {
+            loadUsers() {
+                // this.form.get('api/user');
+                axios.get('api/user').then(({ data }) => (this.users = data));
+            },
             createUser() {
                 console.log(this.form);
                 this.form.post('api/user');
@@ -125,9 +134,11 @@
                     type: 'author', 
                     photo: 'image.png' 
                     })
+                this.loadUsers();
             }
         },
         created() {
+            this.loadUsers();
             this.form.fill({ 
                     name: 'Muhammad Naseer Azmat', 
                     email: 'admin@gmail.com', 

@@ -22,3 +22,9 @@ Route::get('master', [HomeController::class, "index"]);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// For clearing log files from logs directive
+Artisan::command('logs:clear', function() {
+    array_map('unlink', array_filter((array) glob(storage_path('logs/*.log'))));
+    $this->comment('Logs have been cleared!');
+ })->describe('Clear log files');
