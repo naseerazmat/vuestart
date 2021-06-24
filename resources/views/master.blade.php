@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Starter</title>
+  <title>Vue - Laravel</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -89,10 +89,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
+                <router-link to="/users" href="#" class="nav-link">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>Users</p>
+                </router-link>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -122,10 +122,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
-            <!-- <a href="#" class="nav-link">
-              <p>
-              </p>
-            </a> -->
           </li>
         </ul>
       </nav>
@@ -139,9 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
              <router-view></router-view>
-        </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>

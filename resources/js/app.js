@@ -7,18 +7,36 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+import Form from 'vform'
+import {
+  Button,
+  HasError,
+  AlertError,
+  AlertErrors,
+  AlertSuccess
+} from 'vform/src/components/bootstrap5'
+// 'vform/src/components/bootstrap4'
+// 'vform/src/components/tailwind'
 
+Vue.component(Button.name, Button)
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+Vue.component(AlertErrors.name, AlertErrors)
+Vue.component(AlertSuccess.name, AlertSuccess)
+
+window.Form = Form;
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 let routes = [
   { path: '/dashboard', component: require('./components/Dashboard.vue').default },
-  { path: '/profile', component: require('./components/Profile.vue').default }
+  { path: '/profile', component: require('./components/Profile.vue').default },
+  { path: '/users', component: require('./components/Users.vue').default }
 ]
 
 const router = new VueRouter({
-    mode: 'history',
-    routes // short for `routes: routes`
+  routes, // short for `routes: routes`
+  // mode: 'history'
 })
 
 /**
